@@ -1,0 +1,8 @@
+# System files
+.DS_Store
+
+# Parcel cache
+.parcel-cache/
+
+# Node.js dependencies
+node_modules/
