@@ -6,3 +6,5 @@
 
 # Node.js dependencies
 node_modules/
+
+static/index*
