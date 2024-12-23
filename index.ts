@@ -1,7 +1,7 @@
 // tslint:disable:g3-no-void-expression
 
 import * as d3 from 'd3';
-import { LitElement, html, svg } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators';
 import { repeat } from 'lit/directives/repeat';
 import { blogs, Blog } from './blogs';
