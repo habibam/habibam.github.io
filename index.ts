@@ -96,7 +96,6 @@ export class TreesComponent extends LitElement {
 
 
   private link(name: string, link: string) {
-    // return html`<a href=${link}>${name}[↗]</a>`
     return html`<a class='upper' href=${link} target="_blank">${name}</a>`
   }
 
@@ -109,7 +108,7 @@ export class TreesComponent extends LitElement {
     const links = blog.links.map(link => html`<div>${this.link(link.name, link.link)}</div>`);
     return html`
     <div class='title'>${blog.name}</div>
-    <div class='project'>
+    <div class='blog'>
       <a class='img-holder'  href=${blog.links[0].link} target="_blank"> <img src="./images/${blog.image}"></img></a>
 
       <div class='info font-sm'>
