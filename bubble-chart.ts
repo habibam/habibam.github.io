@@ -12,6 +12,7 @@ export function createBubbleChart() {
     const width = 400;
     const height = 200;
 
+    console.log(d3, 'd3');
     const svg = d3.select('#bubble-container')
         .append('svg')
         .attr('width', width)
