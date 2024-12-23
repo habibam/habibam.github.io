@@ -1,4 +1,4 @@
-import { TemplateResult, html } from "lit";
+import { TemplateResult } from "lit";
 
 type Link = {
   name: string;
