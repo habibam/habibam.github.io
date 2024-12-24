@@ -71,7 +71,7 @@ const ve={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6};
       <div class='topbar'>
         ${this.renderNav("about","#about")}
         ${this.renderNav("volunteer work","#project")}
-        ${this.renderNav("blog","#blog")}
+        ${this.renderNav("micro blog","#blog")}
       </div>
       <div class='about-holder'>
         <div class='content'>
@@ -126,6 +126,7 @@ const ve={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6};
       <div class='external'>
         ${e("linked_in.png","https://linkedin.com/in/habibamohamed")}
         ${e("github.png","https://github.com/habibam")}
+        ${e("scholar.png","https://scholar.google.com/citations?user=MetBPh8AAAAJ&hl=en")}
       </div>
       <div class='external'>
         <div>Find me in these #slack communities:
@@ -163,4 +164,4 @@ const ve={ATTRIBUTE:1,CHILD:2,PROPERTY:3,BOOLEAN_ATTRIBUTE:4,EVENT:5,ELEMENT:6};
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */e([ue()],Ce.prototype,"currentView",void 0),e([ue()],Ce.prototype,"fullViewData",void 0),e([ue()],Ce.prototype,"backLink",void 0),Ce=e([(Pe="index-component",e=>"function"==typeof e?((e,t)=>(customElements.define(e,t),t))(Pe,e):((e,t)=>{const{kind:i,elements:n}=t;return{kind:i,elements:n,finisher(t){customElements.define(e,t)}}})(Pe,e))],Ce);
-//# sourceMappingURL=index.09091b9b.js.map
+//# sourceMappingURL=index.68be3ea0.js.map
