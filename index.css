@@ -181,6 +181,7 @@ a:hover {
     margin-bottom: 16px;
     color: rgba(255, 160, 0, 0.79);
     text-decoration: none;
+    float: right;
   }
   .back-link:hover {
     color: #cd3709;

@@ -66,7 +66,7 @@ export class TreesComponent extends LitElement {
     return html`
       <div class="modal" @click="${this.closeModal}">
         <div class="modal-content" @click="${(e: Event) => e.stopPropagation()}">
-          <a class="back-link" href="#" @click="${this.goBack}">Back</a>
+          <a class="back-link" href="#" @click="${this.goBack}">X</a>
           <div class="title">${name}</div>
           <div class="description">${description}</div>
           <div class="links">
@@ -162,8 +162,8 @@ export class TreesComponent extends LitElement {
             <img src="./images/${volunteerProject.image}"></img>
           </a>
           <div class='info font-sm'>
-            <div>${typeof volunteerProject.description === 'string' ? volunteerProject.description.substring(0, 160) : volunteerProject.description}...</div>
-            <div>${links}</div>
+            <div>${typeof volunteerProject.description === 'string' ? volunteerProject.description.substring(0, 160) : volunteerProject.description}<a class="see-more" href="#" @click="${(e: Event) => this.showFullView(e, volunteerProject, '#volunteer')}">...See More</a>
+            </div>
           </div>
         </div>
     `;
