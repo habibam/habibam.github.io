@@ -174,7 +174,7 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
       <div class='topbar'>
         ${this.renderNav("about", "#about")}
         ${this.renderNav("volunteer work", "#project")}
-        ${this.renderNav("blog", "#blog")}
+        ${this.renderNav("micro blog", "#blog")}
       </div>
       <div class='about-holder'>
         <div class='content'>
@@ -248,10 +248,10 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
         ${button("github.png", "https://github.com/habibam")}
       </div>
       <div class='external'>
-        <div>Find me in these #slack communities: 
+        <div>Find me in these #slack communities:
         <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
         <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
-        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a> 
+        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
         <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
         </div>
       </div>
