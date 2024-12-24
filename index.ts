@@ -35,7 +35,7 @@ export class TreesComponent extends LitElement {
       <div class='topbar'>
         ${this.renderNav('about', '#about')}
         ${this.renderNav('volunteer work', '#project')}
-        ${this.renderNav('blog', '#blog')}
+        ${this.renderNav('micro blog', '#blog')}
       </div>
       <div class='about-holder'>
         <div class='content'>
