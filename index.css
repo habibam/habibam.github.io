@@ -226,3 +226,7 @@ a:hover {
     max-width: 800px;
     width: 100%;
   }
+
+  .projects-container {
+    padding: 5px;
+  }
