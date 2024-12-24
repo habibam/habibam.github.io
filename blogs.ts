@@ -10,6 +10,4 @@ export type Blog = {
   image?: string,
   links: Link[]
 }
-export const blogs: Blog[] = [
-
-]
+export const blogs: Blog[] = []
