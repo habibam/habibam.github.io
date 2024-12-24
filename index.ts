@@ -112,6 +112,7 @@ export class TreesComponent extends LitElement {
       <div class='external'>
         ${button('linked_in.png', 'https://linkedin.com/in/habibamohamed')}
         ${button('github.png', 'https://github.com/habibam')}
+        ${button('scholar.png', 'https://scholar.google.com/citations?user=MetBPh8AAAAJ&hl=en')}
       </div>
       <div class='external'>
         <div>Find me in these #slack communities:
