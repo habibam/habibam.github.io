@@ -3,7 +3,7 @@
 }
 
 .font-lg {
-  font-size: 3rem;
+  font-size: 2.25rem;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   line-height: 1.7rem;
 }
 
-#blog, #about, #volunteer, #communities {
+#blog, #project, #about {
   padding-top: 40px;
 }
 
@@ -43,7 +43,7 @@ body {
 
 .about-holder {
   width: 100%;
-  background: #ffa000c9;
+  background: #ffc107;
   justify-content: center;
   padding-bottom: 60px;
   display: flex;
@@ -110,7 +110,7 @@ index-component {
   text-transform: uppercase;
 }
 
-.blog {
+.project {
   justify-content: space-between;
   gap: 20px;
   padding-top: 10px;
@@ -127,23 +127,23 @@ index-component {
   overflow: hidden;
 }
 
-.blog img {
+.project img {
   width: 100%;
   transition: transform .25s;
 }
 
-.blog img:hover {
+.project img:hover {
   transform: scale(1.2);
 }
 
 a {
-  color: #ffa000c9;
+  color: #ffa000;
   line-height: 1.5;
   text-decoration: none;
 }
 
 a:hover {
-  color: #cd3709;
+  color: #ff5722;
 }
 
 @media screen and (width <= 1200px) {
@@ -160,7 +160,7 @@ a:hover {
     line-height: 3.7rem;
   }
 
-  .blog {
+  .project {
     flex-direction: column;
     padding-bottom: 140px;
   }
@@ -174,6 +174,73 @@ a:hover {
     width: 50px;
     height: 50px;
   }
+}
+
+#bubble-container {
+  margin: auto;
+}
+
+.bubble-chart {
+  flex-grow: 1;
+}
+
+.back-link {
+  color: #ffa000c9;
+  margin-bottom: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.back-link:hover {
+  color: #cd3709;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.description {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.links {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.link-item {
+  color: #ffa000c9;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.link-item:hover {
+  color: #cd3709;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: #00000080;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal-content {
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=index.aff706fa.css.map */

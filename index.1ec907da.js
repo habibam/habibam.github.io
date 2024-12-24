@@ -143,49 +143,97 @@
     }
   }
 })({"1jwFz":[function(require,module,exports) {
-// tslint:disable:g3-no-void-expression
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "TreesComponent", ()=>TreesComponent);
 var _tsDecorateMjs = require("@swc/helpers/src/_ts_decorate.mjs");
 var _tsDecorateMjsDefault = parcelHelpers.interopDefault(_tsDecorateMjs);
 var _lit = require("lit");
-var _decorators = require("lit/decorators");
-var _repeat = require("lit/directives/repeat");
+var _decoratorsJs = require("lit/decorators.js");
+var _repeatJs = require("lit/directives/repeat.js");
 var _blogs = require("./blogs");
+var _volunteerProjects = require("./volunteer-projects");
 let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
     constructor(){
         super();
+        this.currentView = "main";
+        this.fullViewData = null;
+        this.backLink = "";
     }
     createRenderRoot() {
         return this;
     }
     render() {
         return (0, _lit.html)`
-    <div class='topbar'>
-      ${this.renderNav("about", "#about")}
-      ${this.renderNav("blog", "#blog")}
-      ${this.renderNav("volunteer work", "#volunteer")}
-    </div>
-    <div class='about-holder'>
-      <div class='content'>
-        <h1 class='font-lg' id='about'>Habiba Mohamed</h1>
-        ${this.renderAbout()}
+      ${this.renderMainView()}
+      ${this.currentView === "full-view" ? this.renderModal() : ""}
+    `;
+    }
+    renderMainView() {
+        return (0, _lit.html)`
+      <div class='topbar'>
+        ${this.renderNav("about", "#about")}
+        ${this.renderNav("volunteer work", "#project")}
+        ${this.renderNav("blog", "#blog")}
       </div>
-    </div>
-
-    <div class='content'>
-      <h1 class='font-lg'  id='blog'>Blog</h1>
-      ${this.renderBlogs()}
-    </div>
-        ${this.renderCommunities()}
-    <div class='content'>
-      <h1 class='font-lg'  id='volunteer'>Volunteer Work</h1>
-            ${this.renderBlogs()}
-    </div>
-    <div> 
-
-    </div> 
+      <div class='about-holder'>
+        <div class='content'>
+          <h1 class='font-lg' id='about'>Habiba Mohamed</h1>
+          ${this.renderAbout()}
+        </div>
+      </div>
+      <div class='volunteer-holder'>
+      <div class='content'>
+        <h1 class='font-lg' id='project'> Volunteer Work </h1>
+        <div>I began  volunteering with Lion Guardians in 2022, below are some of my favorite projects I’ve worked at LINC.</div>
+        <div class='projects-container'>
+          ${this.renderVolunteerProjects()}
+        </div>
+      </div>
+      </div>
+      <div class='content'>
+        <h1 class='font-lg' id='blog'>Blog</h1>
+        ${this.renderBlogs()}
+      </div>
+    `;
+    }
+    renderModal() {
+        if (!this.fullViewData) return (0, _lit.html)``;
+        const { name , description , links  } = this.fullViewData;
+        return (0, _lit.html)`
+      <div class="modal" @click="${this.closeModal}">
+        <div class="modal-content" @click="${(e)=>e.stopPropagation()}">
+          <a class="back-link" href="#" @click="${this.goBack}">Back</a>
+          <div class="title">${name}</div>
+          <div class="description">${description}</div>
+          <div class="links">
+            ${links.map((link)=>(0, _lit.html)`<a class="link-item" href="${link.link}" target="_blank">${link.name}</a>`)}
+          </div>
+        </div>
+      </div>
+    `;
+    }
+    renderNav(name, link) {
+        return (0, _lit.html)`<div class='nav'> <a href=${link} @click="${this.handleNavClick}">${name}</a></div>`;
+    }
+    renderAbout() {
+        return (0, _lit.html)`
+      <div>
+        I'm currently a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services.
+        <br><br>
+        I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Software Engineer/Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
+        <br><br>
+        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments (AWS, Kubernetes).
+        <br><br>
+        I'm passionate about building robust, scalable systems and improving MLOps processes to deploy stable and efficient models.
+        <br><br>
+        I'm also <i>love</i> monitoring and observability and <i>I believe every SDE is an SRE to some extent and the more the better</i>.
+        <br><br>
+        <div class="email font-sm">
+          Resume available upon request.
+          ${this.renderExternal()}
+        </div>
+      </div>
     `;
     }
     renderExternal() {
@@ -195,79 +243,94 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
       `;
         };
         return (0, _lit.html)`
-    <div class='external'>
-      ${button("linked_in.png", "https://linkedin.com/in/habibamohamed")}
-      ${button("github.png", "https://github.com/habibam")}
-    </div> `;
-    }
-    // create a find me in the following communities section
-    // and make it a little toggle that updates things
-    // create a couple of blog posts
-    // bentoml, MLOps, rands leadership slack, write speak code
-    renderNav(name, link) {
-        return (0, _lit.html)`<div class='nav'> <a href=${link}>${name}</a></div>`;
-    }
-    renderAbout() {
-        return (0, _lit.html)`
-    <div>
-      I'm currently a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services.
-    <br><br>
-      I also volunteer as a Software Engineer and Machine Learning Engineer at Lion Guardians, contributing to AI-driven wildlife conservation efforts.
-    <br><br>
-      My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments (AWS, Kubernetes). 
-    <br><br>
-      I'm passionate about building robust, scalable systems and improving MLOps processes to deploy stable and efficient models.
-    <br><br>
-      I'm also <i>love</i> monitoring and observability and <i>I believe every SDE is an SRE to some extent and the more the better</i>.
-    <br><br>
-
-    <div class="email font-sm"> 
-      Resume available upon request.
-    ${this.renderExternal()}
-    </div>
+      <div class='external'>
+        ${button("linked_in.png", "https://linkedin.com/in/habibamohamed")}
+        ${button("github.png", "https://github.com/habibam")}
+      </div>
+      <div class='external'>
+        <div>Find me in these #slack communities: 
+        <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
+        <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
+        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a> 
+        <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
+        </div>
+      </div>
     `;
     }
     link(name, link) {
         return (0, _lit.html)`<a class='upper' href=${link} target="_blank">${name}</a>`;
     }
     renderBlogs() {
-        return (0, _repeat.repeat)((0, _blogs.blogs), (blog)=>this.renderBlog(blog));
+        return (0, _repeatJs.repeat)((0, _blogs.blogs), (blog)=>this.renderBlog(blog));
     }
     renderBlog(blog) {
         const links = blog.links.map((link)=>(0, _lit.html)`<div>${this.link(link.name, link.link)}</div>`);
         return (0, _lit.html)`
-    <div class='title'>${blog.name}</div>
-    <div class='blog'>
-      <a class='img-holder'  href=${blog.links[0].link} target="_blank"> <img src="./images/${blog.image}"></img></a>
-
-      <div class='info font-sm'>
-        <div>${blog.description}</div>
-        <div>
-          ${links}
+      <div class='title'>${blog.name}</div>
+      <div class='blog'>
+        <a class='img-holder' href="#" @click="${(e)=>this.showFullView(e, blog, "#blog")}">
+          <img src="./images/${blog.image}"></img>
+        </a>
+        <div class='info font-sm'>
+          <div>${typeof blog.description === "string" ? blog.description.substring(0, 160) : blog.description}...</div>
+          <div>${links}</div>
         </div>
       </div>
-    </div>
     `;
     }
-    renderCommunities() {
+    renderVolunteerProjects() {
+        return (0, _repeatJs.repeat)((0, _volunteerProjects.volunteerProjects), (volunteerProject)=>this.renderVolunteerProject(volunteerProject));
+    }
+    renderVolunteerProject(volunteerProject) {
+        const links = volunteerProject.links.map((link)=>(0, _lit.html)`<div>${this.link(link.name, link.link)}</div>`);
         return (0, _lit.html)`
-      <div class="bubble-chart">
-        <div class="community-label">
-            Find me in these #slack communities
-        <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
-        <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
-        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
-        <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>Rands Leadership Slack</a>
+        <div class='title'>${volunteerProject.name}</div>
+        <div class='project'>
+          <a class='img-holder' href="#" @click="${(e)=>this.showFullView(e, volunteerProject, "#volunteer")}">
+            <img src="./images/${volunteerProject.image}"></img>
+          </a>
+          <div class='info font-sm'>
+            <div>${typeof volunteerProject.description === "string" ? volunteerProject.description.substring(0, 160) : volunteerProject.description}...</div>
+            <div>${links}</div>
+          </div>
         </div>
-      </div>
     `;
+    }
+    showFullView(event, data, backLink) {
+        event.preventDefault();
+        this.fullViewData = data;
+        this.backLink = backLink;
+        this.currentView = "full-view";
+    }
+    goBack(event) {
+        event.preventDefault();
+        this.currentView = "main";
+    }
+    closeModal(event) {
+        event.preventDefault();
+        this.currentView = "main";
+    }
+    handleNavClick(event) {
+        event.preventDefault();
+        const target = event.target;
+        const href = target.getAttribute("href");
+        if (href) window.location.hash = href;
     }
 };
+(0, _tsDecorateMjsDefault.default)([
+    (0, _decoratorsJs.state)()
+], TreesComponent.prototype, "currentView", void 0);
+(0, _tsDecorateMjsDefault.default)([
+    (0, _decoratorsJs.state)()
+], TreesComponent.prototype, "fullViewData", void 0);
+(0, _tsDecorateMjsDefault.default)([
+    (0, _decoratorsJs.state)()
+], TreesComponent.prototype, "backLink", void 0);
 TreesComponent = (0, _tsDecorateMjsDefault.default)([
-    (0, _decorators.customElement)("index-component")
+    (0, _decoratorsJs.customElement)("index-component")
 ], TreesComponent);
 
-},{"@swc/helpers/src/_ts_decorate.mjs":"6yEaS","lit":"4antt","lit/decorators":"bCPKi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","lit/directives/repeat":"71kf4","./blogs":"3vds5"}],"6yEaS":[function(require,module,exports) {
+},{"@swc/helpers/src/_ts_decorate.mjs":"6yEaS","lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./blogs":"3vds5","./volunteer-projects":"6DRov","lit/decorators.js":"bCPKi","lit/directives/repeat.js":"71kf4"}],"6yEaS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _tslib.__decorate));
@@ -1434,6 +1497,63 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isServer", ()=>o);
 const o = !1;
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3vds5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "blogs", ()=>blogs);
+const blogs = [];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6DRov":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "volunteerProjects", ()=>volunteerProjects);
+const volunteerProjects = [
+    {
+        name: "Deploying the Linc Detection Model with BentoML",
+        image: "linc_detection_.png",
+        description: "I developed a scalable and efficient API for image annotation by integrating the Linc Detection model into the BentoML framework. To enhance flexibility, I replaced outdated methods with a generalized prediction approach and restructured the codebase to be modular, improving readability and maintainability. I implemented Pydantic models to ensure strong type validation in API requests and responses, providing robust input and output handling. To streamline operations, I automated artifact fetching from AWS S3 with a shell script, simplifying the deployment process. Additionally, I created detailed documentation covering installation, deployment, and usage, making it easier for users and developers to interact with the service. This work resulted in a production-ready machine learning service that was scalable, user-friendly, and demonstrated my ability to bridge data science and engineering to deliver practical, deployable solutions. Please review the pull request for the implementation.",
+        links: [
+            {
+                name: "Pull Request",
+                link: "https://github.com/linc-lion/linc-detector-api/pull/4"
+            }
+        ]
+    },
+    {
+        name: "Proof of Concept for Object Detection Model Deployment",
+        image: "linc_detection_webapp.png",
+        description: "I developed the Linc Detector Webapp as a temporary, proof-of-concept solution to enable object detection in images and provide freelancers with a way to interact with the model. The backend was built using Flask and deployed with Gunicorn and AWS Elastic Beanstalk, while the frontend utilized React for a clean and responsive user experience, styled with SCSS and bundled with Parcel. This approach was intentionally not scalable but served as an interim platform to validate the usefulness of object detection for our workflow. The goal was to determine if pre-annotated images could help scientists achieve greater success with lion identification, which relies on a secondary ML service. I also collaborated with contractors to design a UI tailored for scientists, enabling them to process images and generate bounding box outputs efficiently. The project showcased my ability to rapidly prototype full-stack solutions, combining Python, Flask, React, and AWS, and set the stage for implementing a scalable, robust service using the BentoML framework. Please review the pull request for the implementation.",
+        links: [
+            {
+                name: "Pull Request",
+                link: "https://github.com/linc-lion/linc-detector-webapp/pull/3/files"
+            }
+        ]
+    },
+    {
+        name: "Automated Model Deployment for Scalable ML Services on AWS ECS Fargate",
+        image: "torch.png",
+        description: "I automated the deployment process for the Linc Detection API, enabling scalable and efficient production deployment using GitHub Actions and AWS ECS Fargate. I configured GitHub Actions to handle building, pushing, and deploying Docker images, ensuring a streamlined CI/CD pipeline. By leveraging ECS Fargate, I established serverless container management for improved scalability and reduced operational overhead. To address compatibility challenges, I implemented Docker Buildx to handle ARM-based Docker image builds and optimized networking by configuring the awsvpc mode for better isolation and resource management. I also automated the retrieval of model artifacts from AWS S3 using a shell script, further simplifying deployment operations. Comprehensive documentation was provided to guide users and developers through setting up and running the deployment pipeline. This project highlights my expertise in DevOps and cloud deployment, demonstrating the ability to integrate automation, containerization, and scalable architecture to create reliable, production-ready systems for machine learning services. Please review the pull request for the implementation.",
+        links: [
+            {
+                name: "Pull Request",
+                link: "https://github.com/linc-lion/linc-detector-webapp/pull/1/files"
+            }
+        ]
+    },
+    {
+        name: "Automated Resource Provisioning: Terraform and GHA for Environment Based Deployments",
+        image: "terraform.png",
+        description: "I developed an automated solution for provisioning EC2 instances using Terraform, integrated with GitHub Actions to streamline deployment workflows. The project focused on implementing user data scripts tailored to staging and production environments, ensuring environment-specific setup operations are executed during instance launch. Leveraging Terraform, I defined infrastructure as code to standardize the provisioning process, while GitHub Actions handled the automation of deployments. The repository includes comprehensive configurations for EC2 instances, with user data scripts designed to reliably handle environment-specific setups. This approach enhanced deployment efficiency and ensured consistency across different environments. This project demonstrates my ability to implement modern DevOps practices, combining infrastructure as code with CI/CD automation to create robust, maintainable, and environment-specific provisioning pipelines.Please review the pull request for the implementation.",
+        links: [
+            {
+                name: "Pull Request",
+                link: "https://github.com/linc-lion/linc-cv/pull/10"
+            }
+        ]
+    }
+];
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bCPKi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1883,12 +2003,6 @@ var _litHtmlJs = require("./lit-html.js");
     o._$AR();
 };
 
-},{"./lit-html.js":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3vds5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "blogs", ()=>blogs);
-const blogs = [];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1jwFz"], "1jwFz", "parcelRequire26fe")
+},{"./lit-html.js":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1jwFz"], "1jwFz", "parcelRequire26fe")
 
 //# sourceMappingURL=index.1ec907da.js.map
