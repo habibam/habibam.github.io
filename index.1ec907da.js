@@ -151,6 +151,7 @@ var _tsDecorateMjsDefault = parcelHelpers.interopDefault(_tsDecorateMjs);
 var _lit = require("lit");
 var _decoratorsJs = require("lit/decorators.js");
 var _repeatJs = require("lit/directives/repeat.js");
+var _unsafeHtmlJs = require("lit/directives/unsafe-html.js");
 var _blogs = require("./blogs");
 var _volunteerProjects = require("./volunteer-projects");
 let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
@@ -183,17 +184,21 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
         </div>
       </div>
       <div class='volunteer-holder'>
-      <div class='content'>
-        <h1 class='font-lg' id='project'> Volunteer Work </h1>
-        <div>I began  volunteering with Lion Guardians in 2022, below are some of my favorite projects I’ve worked at LINC.</div>
-        <div class='projects-container'>
-          ${this.renderVolunteerProjects()}
+        <div class='content'>
+          <h1 class='font-lg' id='project'> Volunteer Work </h1>
+          <div>I began volunteering with Lion Guardians in 2022, below are some of my favorite projects I’ve worked at LINC.</div>
+          <div class='projects-container'>
+            ${this.renderVolunteerProjects()}
+          </div>
         </div>
       </div>
-      </div>
-      <div class='content'>
-        <h1 class='font-lg' id='blog'>Blog</h1>
-        ${this.renderBlogs()}
+      <div class='blog-holder'>
+        <div class='content'>
+          <h1 class='font-lg' id='blog'> Micro Blogs </h1>
+          <div class='blogs-container'>
+            ${this.renderBlogs()}
+          </div>
+        </div>
       </div>
     `;
     }
@@ -205,7 +210,7 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
         <div class="modal-content" @click="${(e)=>e.stopPropagation()}">
           <a class="back-link" href="#" @click="${this.goBack}">X</a>
           <div class="title">${name}</div>
-          <div class="description">${description}</div>
+          <div class="description">${(0, _unsafeHtmlJs.unsafeHTML)(description)}</div>
           <div class="links">
             ${links.map((link)=>(0, _lit.html)`<a class="link-item" href="${link.link}" target="_blank">${link.name}</a>`)}
           </div>
@@ -219,15 +224,15 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
     renderAbout() {
         return (0, _lit.html)`
       <div>
-        I'm currently a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services.
+        I am a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services. I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
         <br><br>
-        I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Software Engineer/Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
-        <br><br>
-        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments (AWS, Kubernetes).
+        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments.
         <br><br>
         I'm passionate about building robust, scalable systems and improving MLOps processes to deploy stable and efficient models.
         <br><br>
-        I'm also <i>love</i> monitoring and observability and <i>I believe every SDE is an SRE to some extent and the more the better</i>.
+        I also <i>enjoy</i> monitoring and observability infrastructure and <i>I believe every SDE is an SRE</i>.
+        <br><br>
+        Additionally, I enjoy mentoring junior engineers, especially other minority women in tech, to help them grow and succeed in their careers.
         <br><br>
         <div class="email font-sm">
           Resume available upon request.
@@ -267,15 +272,11 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
     renderBlog(blog) {
         const links = blog.links.map((link)=>(0, _lit.html)`<div>${this.link(link.name, link.link)}</div>`);
         return (0, _lit.html)`
-      <div class='title'>${blog.name}</div>
+      <a class="see-more" href="#" @click="${(e)=>this.showFullView(e, blog, "#blog")}"><div class='title'>${blog.name}</div></a>
       <div class='blog'>
         <a class='img-holder' href="#" @click="${(e)=>this.showFullView(e, blog, "#blog")}">
           <img src="./images/${blog.image}"></img>
         </a>
-        <div class='info font-sm'>
-          <div>${typeof blog.description === "string" ? blog.description.substring(0, 160) : blog.description}...</div>
-          <div>${links}</div>
-        </div>
       </div>
     `;
     }
@@ -331,7 +332,7 @@ TreesComponent = (0, _tsDecorateMjsDefault.default)([
     (0, _decoratorsJs.customElement)("index-component")
 ], TreesComponent);
 
-},{"@swc/helpers/src/_ts_decorate.mjs":"6yEaS","lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./blogs":"3vds5","./volunteer-projects":"6DRov","lit/decorators.js":"bCPKi","lit/directives/repeat.js":"71kf4"}],"6yEaS":[function(require,module,exports) {
+},{"@swc/helpers/src/_ts_decorate.mjs":"6yEaS","lit":"4antt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./blogs":"3vds5","./volunteer-projects":"6DRov","lit/decorators.js":"bCPKi","lit/directives/repeat.js":"71kf4","lit/directives/unsafe-html.js":"5KJj0"}],"6yEaS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _tslib.__decorate));
@@ -1502,7 +1503,170 @@ const o = !1;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "blogs", ()=>blogs);
-const blogs = [];
+const blogs = [
+    {
+        name: "Getting Started with AWS CDK: Deploying a Serverless Lambda Function with API Gateway",
+        description: `
+      <h2>Introduction</h2>
+      <p>In this blog post, I will walk you through the steps to get up and running quickly with AWS Cloud Development Kit (CDK) to deploy a serverless Lambda function with an API Gateway endpoint. Assuming you have AWS account setup, This guide will help you understand the basics of CDK and how to leverage it for deploying serverless applications.</p>
+
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Node.js installed (version specified in <code>.nvmrc</code>)</li>
+        <li>AWS Account</li>
+        <li>AWS CLI configured</li>
+        <li>AWS CDK installed globally (<code>npm install -g aws-cdk</code>)</li>
+      </ul>
+
+      <h2>Step 1: Initialize the CDK Project</h2>
+      <p>First, create a new directory for your CDK project and navigate into it. Then, initialize a new CDK project.</p>
+
+      <pre><code>bash
+      mkdir my-cdk-app
+      cd my-cdk-app
+      cdk init app --language javascript
+      </code></pre>
+
+      <h2>Step 2: Define the Lambda Function</h2>
+      <p>Create a new Lambda function in the <code>lib</code> directory. For example, create a file named <code>lambda.js</code>:</p>
+
+      <pre><code>javascript
+      exports.handler = async function(event) {
+        console.log("request:", JSON.stringify(event, undefined, 2));
+        return {
+          statusCode: 200,
+          headers: { "Content-Type": "text/plain" },
+          body: \`Hello, CDK! You've hit \${event.path}\n\`
+        };
+      };
+      </code></pre>
+
+      <h2>Step 3: Create the CDK Stack</h2>
+      <p>Modify the <code>lib/cdk-stack.js</code> file to include the Lambda function and an API Gateway to trigger it.</p>
+
+      <pre><code>javascript
+      const cdk = require('aws-cdk-lib');
+      const lambda = require('aws-cdk-lib/aws-lambda');
+      const apigateway = require('aws-cdk-lib/aws-apigateway');
+
+      class ApiGatewayStack extends cdk.Stack {
+        constructor(scope, id, props) {
+          super(scope, id, props);
+
+          // Define the Lambda function
+          const myLambda = new lambda.Function(this, 'MyLambda', {
+            runtime: lambda.Runtime.NODEJS_20_X,
+            code: lambda.Code.fromAsset('lib'),
+            handler: 'lambda.handler'
+          });
+
+          // Define the API Gateway
+          new apigateway.LambdaRestApi(this, 'Endpoint', {
+            handler: myLambda
+          });
+        }
+      }
+
+      module.exports = { ApiGatewayStack };
+      </code></pre>
+
+      <h2>Step 4: Configure the CDK App</h2>
+      <p>Modify the <code>bin/cdk-app.js</code> file to configure the CDK app and stack.</p>
+
+      <pre><code>javascript
+      #!/usr/bin/env node
+      const cdk = require('aws-cdk-lib');
+      const { ApiGatewayStack } = require('../lib/cdk-stack');
+
+      const env = {
+        account: process.env.AWS_ACCOUNT,
+        region: process.env.DEPLOY_REGION
+      };
+
+      const STACK_NAME = 'api-gateway-stack';
+      const cdkApp = new cdk.App();
+
+      new ApiGatewayStack(cdkApp, STACK_NAME, {
+        synthesizer: new cdk.CliCredentialsStackSynthesizer(),
+        env
+      });
+      </code></pre>
+
+      <h2>Step 5: Deploy the Stack</h2>
+      <p>Deploy the stack using the CDK CLI.</p>
+
+      <pre><code>bash
+      cdk deploy
+      </code></pre>
+
+      <h2>Step 6: Optional: Schedule Lambda Invocation using GitHub Actions</h2>
+      <p>To use the GitHub Actions (GHA) scheduler function to call the Lambda on a schedule, you can set up a workflow file in your repository. This allows you to run your Lambda function on a specified schedule without the need for additional infrastructure like cron jobs in a Kubernetes cluster. Below is an example of how to set this up:</p>
+
+      <pre><code>yaml
+      name: Scheduled Lambda Invocation
+      on:
+        workflow_dispatch:
+        schedule:
+          - cron: '0 21 * * 2'
+
+      jobs:
+        invoke-lambda:
+          runs-on: ubuntu-latest
+          steps:
+          - uses: actions/checkout@v2
+          - name: Login to AWS
+            uses: aws-actions/configure-aws-credentials@v1
+            with:
+              role-to-assume: "role-to-assume"
+              role-skip-session-tagging: true
+              role-duration-seconds: 3600
+              aws-region: us-west-2
+          - name: Setup Node
+            uses: actions/setup-node@v2
+            with:
+              node-version-file: .nvmrc
+              cache: 'npm'
+              cache-dependency-path: package-lock.json
+          - name: Install dependencies
+            run: npm ci
+          - name: Invoke Lambda
+            run: |
+              aws lambda invoke \
+                --function-name my-lambda-function \
+                --payload '{}' \
+                response.json
+          - name: Notify slack on success
+            if: success()
+            uses: rtCamp/action-slack-notify@v2
+            with:
+              status: 'success'
+              message: "Workflow succeeded"
+              webhook-url: 'SLACK_WEBHOOK_URL'
+          - name: Notify slack on failure
+            if: failure()
+            uses: rtCamp/action-slack-notify@v2
+            with:
+              webhook-url: 'SLACK_WEBHOOK_URL'
+              status: 'failure'
+              message: "Workflow failed"
+      </code></pre>
+
+      <h2>Conclusion</h2>
+      <p>Congratulations! You have successfully deployed a serverless Lambda function with an API Gateway endpoint using AWS CDK and scheduled its invocation using GitHub Actions. This is just the beginning, and there are many more features and configurations you can explore with CDK and GitHub Actions.</p>
+    `,
+        image: "aws-cdk.png",
+        links: [
+            {
+                name: "AWS CDK Documentation",
+                link: "https://docs.aws.amazon.com/cdk/latest/guide/home.html"
+            },
+            {
+                name: "GitHub Actions Documentation",
+                link: "https://docs.github.com/en/actions"
+            }
+        ]
+    }
+];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6DRov":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -2004,6 +2168,46 @@ var _litHtmlJs = require("./lit-html.js");
     o._$AR();
 };
 
-},{"./lit-html.js":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1jwFz"], "1jwFz", "parcelRequire26fe")
+},{"./lit-html.js":"1cmQt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5KJj0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _unsafeHtmlJs = require("lit-html/directives/unsafe-html.js");
+parcelHelpers.exportAll(_unsafeHtmlJs, exports);
+
+},{"lit-html/directives/unsafe-html.js":"91pKz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"91pKz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UnsafeHTMLDirective", ()=>e);
+parcelHelpers.export(exports, "unsafeHTML", ()=>o);
+var _litHtmlJs = require("../lit-html.js");
+var _directiveJs = require("../directive.js");
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ class e extends (0, _directiveJs.Directive) {
+    constructor(i){
+        if (super(i), this.et = (0, _litHtmlJs.nothing), i.type !== (0, _directiveJs.PartType).CHILD) throw Error(this.constructor.directiveName + "() can only be used in child bindings");
+    }
+    render(r) {
+        if (r === (0, _litHtmlJs.nothing) || null == r) return this.ft = void 0, this.et = r;
+        if (r === (0, _litHtmlJs.noChange)) return r;
+        if ("string" != typeof r) throw Error(this.constructor.directiveName + "() called with a non-string value");
+        if (r === this.et) return this.ft;
+        this.et = r;
+        const s = [
+            r
+        ];
+        return s.raw = s, this.ft = {
+            _$litType$: this.constructor.resultType,
+            strings: s,
+            values: []
+        };
+    }
+}
+e.directiveName = "unsafeHTML", e.resultType = 1;
+const o = (0, _directiveJs.directive)(e);
+
+},{"../lit-html.js":"1cmQt","../directive.js":"9lbyV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1jwFz"], "1jwFz", "parcelRequire26fe")
 
 //# sourceMappingURL=index.1ec907da.js.map

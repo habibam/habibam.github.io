@@ -110,11 +110,11 @@ index-component {
   text-transform: uppercase;
 }
 
-.project {
+.project, .blog {
   justify-content: space-between;
   gap: 20px;
   padding-top: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
   display: flex;
 }
 
@@ -127,12 +127,12 @@ index-component {
   overflow: hidden;
 }
 
-.project img {
+.project img, .blog img {
   width: 100%;
   transition: transform .25s;
 }
 
-.project img:hover {
+.project img:hover, .blog img:hover {
   transform: scale(1.2);
 }
 
@@ -158,11 +158,6 @@ a:hover {
     padding: 45px;
     font-size: 2rem;
     line-height: 3.7rem;
-  }
-
-  .project {
-    flex-direction: column;
-    padding-bottom: 140px;
   }
 
   .img-holder {
@@ -239,13 +234,25 @@ a:hover {
 .modal-content {
   max-width: 800px;
   width: 100%;
+  max-height: 90%;
   background: #fff;
   border-radius: 8px;
   padding: 20px;
+  overflow-y: auto;
 }
 
-.projects-container {
-  padding: 5px;
+.see-more {
+  color: #ffa000c9;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.see-more:hover {
+  color: #cd3709;
+}
+
+.projects-container, .blog-container {
+  padding-top: 20px;
 }
 
 /*# sourceMappingURL=index.aff706fa.css.map */
