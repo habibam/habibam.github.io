@@ -255,4 +255,10 @@ a:hover {
   padding-top: 20px;
 }
 
+@media (width <= 768px) {
+  .project, .blog {
+    display: block;
+  }
+}
+
 /*# sourceMappingURL=index.aff706fa.css.map */
