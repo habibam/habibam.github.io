@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { blogs, Blog } from './blogs';
 import { volunteerProjects, VolunteerProjects } from './volunteer-projects';
 
@@ -13,7 +14,6 @@ export class TreesComponent extends LitElement {
   @state() private currentView: 'main' | 'full-view' = 'main';
   @state() private fullViewData: Blog | VolunteerProjects | null = null;
   @state() private backLink: string = '';
-
 
   constructor() {
     super();
@@ -44,17 +44,21 @@ export class TreesComponent extends LitElement {
         </div>
       </div>
       <div class='volunteer-holder'>
-      <div class='content'>
-        <h1 class='font-lg' id='project'> Volunteer Work </h1>
-        <div>I began  volunteering with Lion Guardians in 2022, below are some of my favorite projects I’ve worked at LINC.</div>
-        <div class='projects-container'>
-          ${this.renderVolunteerProjects()}
+        <div class='content'>
+          <h1 class='font-lg' id='project'> Volunteer Work </h1>
+          <div>I began volunteering with Lion Guardians in 2022, below are some of my favorite projects I’ve worked at LINC.</div>
+          <div class='projects-container'>
+            ${this.renderVolunteerProjects()}
+          </div>
         </div>
       </div>
-      </div>
-      <div class='content'>
-        <h1 class='font-lg' id='blog'>Blog</h1>
-        ${this.renderBlogs()}
+      <div class='blog-holder'>
+        <div class='content'>
+          <h1 class='font-lg' id='blog'> Micro Blogs </h1>
+          <div class='blogs-container'>
+            ${this.renderBlogs()}
+          </div>
+        </div>
       </div>
     `;
   }
@@ -68,7 +72,7 @@ export class TreesComponent extends LitElement {
         <div class="modal-content" @click="${(e: Event) => e.stopPropagation()}">
           <a class="back-link" href="#" @click="${this.goBack}">X</a>
           <div class="title">${name}</div>
-          <div class="description">${description}</div>
+          <div class="description">${unsafeHTML(description as string)}</div>
           <div class="links">
             ${links.map(link => html`<a class="link-item" href="${link.link}" target="_blank">${link.name}</a>`)}
           </div>
@@ -84,15 +88,15 @@ export class TreesComponent extends LitElement {
   private renderAbout() {
     return html`
       <div>
-        I'm currently a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services.
+        I am a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services. I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
         <br><br>
-        I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Software Engineer/Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
-        <br><br>
-        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments (AWS, Kubernetes).
+        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments.
         <br><br>
         I'm passionate about building robust, scalable systems and improving MLOps processes to deploy stable and efficient models.
         <br><br>
-        I'm also <i>love</i> monitoring and observability and <i>I believe every SDE is an SRE to some extent and the more the better</i>.
+        I also <i>enjoy</i> monitoring and observability infrastructure and <i>I believe every SDE is an SRE</i>.
+        <br><br>
+        Additionally, I enjoy mentoring junior engineers, especially other minority women in tech, to help them grow and succeed in their careers.
         <br><br>
         <div class="email font-sm">
           Resume available upon request.
@@ -136,15 +140,11 @@ export class TreesComponent extends LitElement {
   private renderBlog(blog: Blog) {
     const links = blog.links.map(link => html`<div>${this.link(link.name, link.link)}</div>`);
     return html`
-      <div class='title'>${blog.name}</div>
+      <a class="see-more" href="#" @click="${(e: Event) => this.showFullView(e, blog, '#blog')}"><div class='title'>${blog.name}</div></a>
       <div class='blog'>
         <a class='img-holder' href="#" @click="${(e: Event) => this.showFullView(e, blog, '#blog')}">
           <img src="./images/${blog.image}"></img>
         </a>
-        <div class='info font-sm'>
-          <div>${typeof blog.description === 'string' ? blog.description.substring(0, 160) : blog.description}...</div>
-          <div>${links}</div>
-        </div>
       </div>
     `;
   }
@@ -194,5 +194,4 @@ export class TreesComponent extends LitElement {
       window.location.hash = href;
     }
   }
-
 }

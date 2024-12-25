@@ -107,12 +107,13 @@ index-component {
   text-transform: uppercase;
 }
 
-.project {
+.project, .blog {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 40px;
   padding-top: 10px;
+  padding-bottom: 50px;
 }
 .img-holder {
   flex: 0 0 400px;
@@ -122,12 +123,12 @@ index-component {
   border-radius: 15px;
   filter: grayscale(50%) brightness(90%);
 }
-.project img {
+.project img, .blog img {
   width: 100%;
   transition: transform 0.25s ease;
 }
 
-.project img:hover {
+.project img:hover, .blog img:hover {
   transform: scale(1.2);
 }
 
@@ -153,10 +154,7 @@ a:hover {
     padding: 45px;
     font-size: 2rem;
   }
-  .project {
-    flex-direction: column;
-    padding-bottom: 140px;
-  }
+
   .img-holder {
     height: unset;
     flex: unset;
@@ -226,8 +224,19 @@ a:hover {
     border-radius: 8px;
     max-width: 800px;
     width: 100%;
+    max-height: 90%;
+    overflow-y: auto;
   }
 
-  .projects-container {
-    padding: 5px;
+  .see-more {
+    color: rgba(255, 160, 0, 0.79);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .see-more:hover {
+    color: #cd3709;
+  }
+
+  .projects-container, .blog-container {
+    padding-top: 20px;
   }
