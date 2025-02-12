@@ -124,7 +124,7 @@ export class TreesComponent extends LitElement {
         <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
         <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
         <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
-        <br><br>
+        <br>
         <span>Read my Master's Thesis<a href='https://digital.lib.washington.edu/server/api/core/bitstreams/3f606847-04b1-41b9-8c8c-361fd0d326b2/content'>A Multi-Objective Optimization
 Approach for Edge Based Resource Allocation</a></span?
         </div>
