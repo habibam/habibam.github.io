@@ -120,13 +120,12 @@ export class TreesComponent extends LitElement {
       </div>
       <div class='external'>
         <div>Find me in these #slack communities:
-        <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
-        <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
-        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
-        <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
-        <br>
-        <span>Read my Master's Thesis<a href='https://digital.lib.washington.edu/server/api/core/bitstreams/3f606847-04b1-41b9-8c8c-361fd0d326b2/content'>A Multi-Objective Optimization
-Approach for Edge Based Resource Allocation</a></span?
+          <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
+          <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
+          <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
+          <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
+          <br>
+          <span>My favorite thesis publication: <a href='https://www.osti.gov/pages/servlets/purl/1985399'>Efficient IoT Resource Allocation & Task Scheduling</a></span>
         </div>
       </div>
     `;
