@@ -224,18 +224,16 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
     renderAbout() {
         return (0, _lit.html)`
       <div>
-        I am a Senior Software Engineer at GoDaddy, where I optimize cloud infrastructure and develop scalable services. I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
+        I am a Senior Software Engineer at Microsoft, specializing in AI Security. I also <a href="https://linclion.org/technical-development-team/#habibamohamed">volunteer</a> as a Machine Learning Engineer at <a href="https://github.com/linc-lion/LINC-detector?tab=readme-ov-file#linc-object-detector">Lion Guardians</a>, contributing to AI-driven wildlife conservation efforts.
         <br><br>
-        My work focuses on improving system reliability, streamlining machine learning workflows, and optimizing cloud environments.
+        My work centers on securing AI systems and enhancing visibility and observability of AI-driven processes to ensure reliability and trust.
         <br><br>
-        I'm passionate about building robust, scalable systems and improving MLOps processes to deploy stable and efficient models.
+        My passion centers around the intersection of AI, security, and observability. I'm dedicated to leveraging technology to create positive impact, whether through securing enterprise AI systems or applying machine learning to wildlife conservation efforts.
         <br><br>
-        I also <i>enjoy</i> monitoring and observability infrastructure and <i>I believe every SDE is an SRE</i>.
-        <br><br>
-        Additionally, I enjoy mentoring junior engineers, especially other minority women in tech, to help them grow and succeed in their careers.
+        Additionally, I enjoy mentoring junior engineers, especially other minority women in tech, to help them grow and succeed in their careers. I believe diverse perspectives are essential for building ethical and secure AI systems.
         <br><br>
         <div class="email font-sm">
-          Resume available upon request.
+          Resume available upon request. All opinions expressed are my own and do not reflect those of my employer.
           ${this.renderExternal()}
         </div>
       </div>
@@ -255,22 +253,18 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
       </div>
       <div class='external'>
         <div>Find me in these #slack communities:
-        <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
-        <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
-        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
-        <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
+          <a href='https://bentoml.slack.com/team/U02MBFM7P7Y'>BentoML</a>
+          <a href='https://mlops-community.slack.com/team/U038CKDA738'>MLOps</a>
+          <a href='https://wsccommunity.slack.com/team/UGZA7NPEK'>Write Speak Code</a>
+          <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT'>RLS</a>
         </div>
       </div>
     `;
-    }
-    link(name, link) {
-        return (0, _lit.html)`<a class='upper' href=${link} target="_blank">${name}</a>`;
     }
     renderBlogs() {
         return (0, _repeatJs.repeat)((0, _blogs.blogs), (blog)=>this.renderBlog(blog));
     }
     renderBlog(blog) {
-        const links = blog.links.map((link)=>(0, _lit.html)`<div>${this.link(link.name, link.link)}</div>`);
         return (0, _lit.html)`
       <a class="see-more" href="#" @click="${(e)=>this.showFullView(e, blog, "#blog")}"><div class='title'>${blog.name}</div></a>
       <div class='blog'>
@@ -284,7 +278,6 @@ let TreesComponent = class TreesComponent extends (0, _lit.LitElement) {
         return (0, _repeatJs.repeat)((0, _volunteerProjects.volunteerProjects), (volunteerProject)=>this.renderVolunteerProject(volunteerProject));
     }
     renderVolunteerProject(volunteerProject) {
-        const links = volunteerProject.links.map((link)=>(0, _lit.html)`<div>${this.link(link.name, link.link)}</div>`);
         return (0, _lit.html)`
         <div class='title'>${volunteerProject.name}</div>
         <div class='project'>
