@@ -12,7 +12,18 @@ const About: React.FC = () => (
     <br /><br />
     <div className="email font-sm">
       Resume available upon request. All opinions expressed are my own and do not reflect those of my employer.
-      {/* External links can be added here if needed */}
+      <div className='external' style={{marginTop: '10px'}}>
+        <a href="https://linkedin.com/in/habibamohamed" target="_blank" rel="noopener noreferrer" className='icon-link'><img src="/images/linked_in.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/habibam" target="_blank" rel="noopener noreferrer" className='icon-link'><img src="/images/github.png" alt="GitHub" /></a>
+        <a href="https://scholar.google.com/citations?user=MetBPh8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className='icon-link'><img src="/images/scholar.png" alt="Google Scholar" /></a>
+      </div>
+      <div className='external' style={{marginTop: '10px'}}>
+        Find me in these #slack communities:
+        <a href='https://bentoml.slack.com/team/U02MBFM7P7Y' target='_blank' rel='noopener noreferrer'>BentoML</a>{' '}
+        <a href='https://mlops-community.slack.com/team/U038CKDA738' target='_blank' rel='noopener noreferrer'>MLOps</a>{' '}
+        <a href='https://wsccommunity.slack.com/team/UGZA7NPEK' target='_blank' rel='noopener noreferrer'>Write Speak Code</a>{' '}
+        <a href='https://rands-leadership.slack.com/team/U07AKCMSJUT' target='_blank' rel='noopener noreferrer'>RLS</a>
+      </div>
     </div>
   </div>
 );

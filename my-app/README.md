@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Habiba Mohamed — Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the personal website and portfolio of Habiba Mohamed, Senior Software Engineer at Microsoft specializing in AI Security. The site showcases professional experience, volunteer projects, micro blogs, and ways to connect.
 
-## Available Scripts
+## Features
+- **About:** Professional background, passions, and contact info
+- **Volunteer Work:** Projects for Lion Guardians and other organizations
+- **Micro Blogs:** Technical write-ups and tutorials
+- **Modern UI:** Responsive, accessible, and visually appealing
+- **Custom Domain:** [www.habibamohamed.com](https://www.habibamohamed.com)
 
-In the project directory, you can run:
+## Tech Stack
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [react-router-dom](https://reactrouter.com/) for routing
+- [react-modal](https://github.com/reactjs/react-modal) for modals
+- Custom CSS for styling
+- Deployed via [GitHub Pages](https://pages.github.com/)
 
-### `npm start`
+## Migration Story
+This site was originally built from scratch by Habiba Mohamed using vanilla TypeScript and LitElement. In 2025, the project was migrated to a modern React app in partnership with GitHub Copilot and a knowledge graph MCP server. Copilot provided code suggestions, refactoring guidance, and automated much of the migration process, while the MCP server helped organize and contextualize the codebase. This collaboration enabled a smooth transition to a scalable, maintainable, and feature-rich React application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup & Development
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run locally:**
+   ```sh
+   npm start
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view in your browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deployment
+- The site is deployed to GitHub Pages using the `gh-pages` package.
+- To deploy:
+  ```sh
+  npm run deploy
+  ```
+- The custom domain is set via the `CNAME` file in `public/`.
 
-### `npm test`
+## Credits
+- All content © Habiba Mohamed
+- Volunteer project images and blog content are original or credited in context
+- React migration and automation partnership: [GitHub Copilot](https://github.com/features/copilot) and a knowledge graph MCP server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+For questions, feedback, or collaboration, connect via [LinkedIn](https://linkedin.com/in/habibamohamed) or the Slack communities listed on the About page.
