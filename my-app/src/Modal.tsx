@@ -1,27 +1,36 @@
 import React from 'react';
+import ReactModal from 'react-modal';
 import { Blog } from './blogs';
 import { VolunteerProjects } from './volunteer-projects';
 
 interface ModalProps {
-  data: Blog | VolunteerProjects;
+  data: Blog | VolunteerProjects | null;
   onClose: () => void;
+  isOpen: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ data, onClose }) => {
+ReactModal.setAppElement('#root');
+
+const Modal: React.FC<ModalProps> = ({ data, onClose, isOpen }) => {
+  if (!data) return null;
   const { name, description, links } = data;
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <a className="back-link" href="#" onClick={e => { e.preventDefault(); onClose(); }}>X</a>
-        <div className="title">{name}</div>
-        <div className="description" dangerouslySetInnerHTML={{ __html: description as string }} />
-        <div className="links">
-          {links.map(link => (
-            <a className="link-item" href={link.link} target="_blank" rel="noopener noreferrer" key={link.name}>{link.name}</a>
-          ))}
-        </div>
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      contentLabel="Details"
+      className="modal-content"
+      overlayClassName="modal"
+    >
+      <button className="back-link" onClick={onClose}>X</button>
+      <div className="title">{name}</div>
+      <div className="description" dangerouslySetInnerHTML={{ __html: description as string }} />
+      <div className="links">
+        {links.map(link => (
+          <a className="link-item" href={link.link} target="_blank" rel="noopener noreferrer" key={link.name}>{link.name}</a>
+        ))}
       </div>
-    </div>
+    </ReactModal>
   );
 };
 

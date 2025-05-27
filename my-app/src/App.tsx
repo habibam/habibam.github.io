@@ -62,9 +62,7 @@ function App() {
           </div>
         } />
       </Routes>
-      {currentView === 'full-view' && fullViewData && (
-        <Modal data={fullViewData} onClose={closeModal} />
-      )}
+      <Modal data={fullViewData!} onClose={closeModal} isOpen={currentView === 'full-view' && !!fullViewData} />
     </Router>
   );
 }
