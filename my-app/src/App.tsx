@@ -63,6 +63,9 @@ function App() {
         } />
       </Routes>
       <Modal data={fullViewData!} onClose={closeModal} isOpen={currentView === 'full-view' && !!fullViewData} />
+      <footer style={{ textAlign: 'center', padding: '20px 0', fontSize: '0.95rem', color: '#888' }}>
+        &copy; {new Date().getFullYear()} Habiba Mohamed. All rights reserved.
+      </footer>
     </Router>
   );
 }
