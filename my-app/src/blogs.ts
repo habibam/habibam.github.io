@@ -1,15 +1,8 @@
-import { TemplateResult } from "lit";
-
-type Link = {
+export interface Blog {
   name: string;
-  link: string;
-}
-
-export type Blog = {
-  name: string,
-  description: string | TemplateResult,
-  image?: string,
-  links: Link[]
+  description: string;
+  image: string;
+  links: { name: string; link: string }[];
 }
 
 export const blogs: Blog[] = [
@@ -38,21 +31,19 @@ export const blogs: Blog[] = [
 
       <h2>Step 2: Define the Lambda Function</h2>
       <p>Create a new Lambda function in the <code>lib</code> directory. For example, create a file named <code>lambda.js</code>:</p>
-
       <pre><code>javascript
       exports.handler = async function(event) {
         console.log("request:", JSON.stringify(event, undefined, 2));
         return {
           statusCode: 200,
           headers: { "Content-Type": "text/plain" },
-          body: \`Hello, CDK! You've hit \${event.path}\n\`
+          body: "Hello, CDK! You've hit ${'${event.path}'}\n"
         };
       };
       </code></pre>
 
       <h2>Step 3: Create the CDK Stack</h2>
       <p>Modify the <code>lib/cdk-stack.js</code> file to include the Lambda function and an API Gateway to trigger it.</p>
-
       <pre><code>javascript
       const cdk = require('aws-cdk-lib');
       const lambda = require('aws-cdk-lib/aws-lambda');
@@ -81,9 +72,8 @@ export const blogs: Blog[] = [
 
       <h2>Step 4: Configure the CDK App</h2>
       <p>Modify the <code>bin/cdk-app.js</code> file to configure the CDK app and stack.</p>
-
       <pre><code>javascript
-      #!/usr/bin/env node
+      // #!/usr/bin/env node
       const cdk = require('aws-cdk-lib');
       const { ApiGatewayStack } = require('../lib/cdk-stack');
 
@@ -103,14 +93,12 @@ export const blogs: Blog[] = [
 
       <h2>Step 5: Deploy the Stack</h2>
       <p>Deploy the stack using the CDK CLI.</p>
-
       <pre><code>bash
       cdk deploy
       </code></pre>
 
       <h2>Step 6: Optional: Schedule Lambda Invocation using GitHub Actions</h2>
       <p>To use the GitHub Actions (GHA) scheduler function to call the Lambda on a schedule, you can set up a workflow file in your repository. This allows you to run your Lambda function on a specified schedule without the need for additional infrastructure like cron jobs in a Kubernetes cluster. Below is an example of how to set this up:</p>
-
       <pre><code>yaml
       name: Scheduled Lambda Invocation
       on:
@@ -163,7 +151,7 @@ export const blogs: Blog[] = [
       <h2>Conclusion</h2>
       <p>Congratulations! You have successfully deployed a serverless Lambda function with an API Gateway endpoint using AWS CDK and scheduled its invocation using GitHub Actions. This is just the beginning, and there are many more features and configurations you can explore with CDK and GitHub Actions.</p>
     `,
-    image: "aws-cdk.png",
+    image: "/aws-cdk.png",
     links: [
       {
         name: "AWS CDK Documentation",
