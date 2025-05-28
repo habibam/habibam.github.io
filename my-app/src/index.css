@@ -1,3 +1,115 @@
+/*
+  Theme variables for brown, gray, and black & white themes
+*/
+:root {
+  --color-bg: #f9f6f2; /* light tan */
+  --color-text: #2d1c10; /* deep brown */
+  --color-accent: #7c4a03; /* rich brown for links/highlights */
+  --color-card: #f5e9da; /* lighter tan for cards */
+  --color-card-border: #c2b280; /* muted tan border */
+}
+.theme-brown {
+  --color-bg: #f7f3ef;
+  --color-text: #3e2723;
+  --color-accent: #7c4a03;
+  --color-card: #eaddcf;
+  --color-card-border: #bfa77a;
+}
+.theme-gray {
+  --color-bg: #ece7e1;
+  --color-text: #2d1c10;
+  --color-accent: #7c4a03;
+  --color-card: #e0d6c3;
+  --color-card-border: #bfa77a;
+}
+.theme-bw {
+  --color-bg: #fff;
+  --color-text: #2d1c10;
+  --color-accent: #000;
+  --color-card: #f5e9da;
+  --color-card-border: #bfa77a;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+a:hover, a:focus {
+  color: #3e2723;
+  background: #eaddcf;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.about-holder,
+.volunteer-holder,
+.blog-holder {
+  background: none;
+  color: inherit;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 60px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.project,
+.blog {
+  background: var(--color-card);
+  color: var(--color-text);
+  border-radius: 12px;
+  border: 1px solid var(--color-card-border);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(44, 32, 16, 0.04);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.email {
+  border-top: 3px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.back-link, .see-more, .link-item {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+.back-link:hover, .see-more:hover, .link-item:hover {
+  color: #3e2723;
+  background: #eaddcf;
+}
+
+.topbar {
+  background: var(--color-card);
+  color: var(--color-text);
+  box-shadow: 0 2px 3px rgba(44, 32, 16, 0.08);
+}
+
+.topbar .nav a {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.topbar .nav a:hover, .topbar .nav a:focus {
+  color: #3e2723 !important;
+  background: #eaddcf;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.img-holder {
+  background: #eaddcf;
+}
+
+/* Remove any yellow/orange color references below */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -54,21 +166,27 @@ body {
 }
 
 .about-holder {
-  background: rgb(255, 193, 7);
+  background: none;
+  color: inherit;
   width: 100%;
   justify-content: center;
   display: flex;
   padding-bottom: 60px;
+  transition: background 0.3s, color 0.3s;
 }
 
-  .volunteer-holder, .blog-holder {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    padding-top: 20px;
-  }
+.volunteer-holder,
+.blog-holder {
+  background: none;
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 20px;
+  transition: background 0.3s, color 0.3s;
+}
 
 h1 {
   margin-top: 0;
@@ -131,7 +249,6 @@ index-component {
 }
 
 .project, .blog {
-  display: flex;
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 40px;
@@ -155,14 +272,21 @@ index-component {
   transform: scale(1.2);
 }
 
-a {
-  color: #ffa000;
-  text-decoration: none;
-  line-height: 1.5;
-}
 
-a:hover {
-  color: #ff5722;
+
+.see-more {
+  color: var(--color-accent) !important;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  transition: color 0.2s, background 0.2s;
+}
+.see-more:hover, .see-more:focus {
+  color: #fff !important;
+  background: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -251,14 +375,7 @@ a:hover {
     overflow-y: auto;
   }
 
-  .see-more {
-    color: rgba(255, 160, 0, 0.79);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .see-more:hover {
-    color: #cd3709;
-  }
+
 
   .projects-container, .blog-container {
     padding-top: 20px;
